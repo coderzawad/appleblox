@@ -31,7 +31,7 @@
 					await Roblox.Utils.createShortcut();
 				} catch (err) {
 					console.error('[RobloxPanel] ', err);
-					toast.error('An error occured while trying to save the shortcut', {
+					toast.error('An error occurred while trying to save the shortcut', {
 						duration: 2000,
 					});
 					return;
@@ -52,7 +52,7 @@
 	const panel = new SettingsPanelBuilder()
 		.setName('Roblox')
 		.setDescription('Roblox application settings and other bootstrapper behavior')
-		.setId('roblox') // Not updating the ID to preserve old settings
+		.setId('roblox')
 		.addCategory((category) =>
 			category
 				.setName('Multiple Instances')
@@ -62,21 +62,21 @@
 					label: 'Enable Multi-Instance',
 					description: 'Update patch to allow multiple Roblox windows',
 					id: 'multi_roblox_btn',
-					variant: 'default',
+					variant: 'default', // Blue
 					icon: { component: CopyCheck },
 				})
 				.addButton({
 					label: 'New Instance',
 					description: 'Open an additional Roblox instance',
 					id: 'open_instance_btn',
-					variant: 'secondary',
+					variant: 'secondary', // Gray
 					icon: { component: PictureInPicture },
 				})
 				.addButton({
 					label: 'Close All',
 					description: 'Force close all Roblox windows (You should save your progress first)',
 					id: 'close_roblox_btn',
-					variant: 'destructive',
+					variant: 'destructive', // Red
 					icon: { component: BugOff },
 				})
 		)
@@ -99,9 +99,9 @@
 					default: false,
 				})
 				.addSwitch({
-					label: "Exit AppleBlox when Roblox is closed",
-					description: "Automatically close AppleBlox if the Roblox Desktop app is closed.",
-					id: "close_on_exit",
+					label: 'Exit AppleBlox when Roblox is closed',
+					description: 'Automatically close AppleBlox if the Roblox Desktop app is closed.',
+					id: 'close_on_exit',
 					default: false,
 				})
 				.addSwitch({
@@ -115,7 +115,7 @@
 					label: 'Create Launch Shortcut',
 					description: 'Create a desktop shortcut that launches Roblox with AppleBlox features',
 					id: 'create_shortcut_btn',
-					variant: 'default',
+					variant: 'default', // Blue
 					icon: { component: Play },
 				})
 		)
@@ -134,6 +134,10 @@
 		}
 	}
 </script>
+
+<style>
+	/* Add any additional scoped styles if required */
+</style>
 
 <AlertDialog.Root bind:open={closeRobloxPopup}>
 	<AlertDialog.Content>
@@ -161,7 +165,8 @@
 	<Panel {panel} on:switch={switchClicked} on:button={buttonClicked} {render} {overrides} />
 {:catch error}
 	{#if render}
-		<h2 class="text-red-500">An error occured while loading settings overrides</h2>
+		<h2 class="text-red-500">An error occurred while loading settings overrides</h2>
 		<p class="text-red-300">{error}</p>
 	{/if}
 {/await}
+
