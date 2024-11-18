@@ -103,50 +103,14 @@
 		.build();
 </script>
 
+<div
+	class="animate-fade-in text-gray-200 p-8 rounded-xl shadow-md"
+>
+	<Panel {panel} {render} on:switch={onSwitchClicked} />
+</div>
+
 <style>
-	/* Panel Container */
-	.panel-container {
-		animation: fadeIn 0.5s ease-in-out;
-		background: linear-gradient(135deg, #f9f9f9, #e8e8e8);
-		padding: 2rem;
-		border-radius: 12px;
-		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-		transition: transform 0.3s, background-color 0.3s;
-	}
-
-	.panel-container:hover {
-		background-color: #ffffff;
-		transform: translateY(-5px);
-	}
-
-	/* Switch Styling */
-	.switch-container {
-		margin: 1rem 0;
-		padding: 1rem;
-		border: 1px solid #ddd;
-		border-radius: 8px;
-		background-color: #fafafa;
-		transition: background-color 0.3s;
-	}
-
-	.switch-container:hover {
-		background-color: #f1f1f1;
-	}
-
-	.switch-label {
-		font-weight: bold;
-		font-size: 1rem;
-		color: #333;
-	}
-
-	.switch-description {
-		color: #666;
-		font-size: 0.9rem;
-		margin-top: 0.2rem;
-	}
-
-	/* Fade-in Animation */
-	@keyframes fadeIn {
+	@keyframes fade-in {
 		from {
 			opacity: 0;
 			transform: translateY(20px);
@@ -157,27 +121,9 @@
 		}
 	}
 
-	/* Responsive Design */
-	@media (max-width: 768px) {
-		.panel-container {
-			padding: 1rem;
-		}
-
-		.switch-container {
-			padding: 0.8rem;
-		}
-
-		.switch-label {
-			font-size: 0.9rem;
-		}
-
-		.switch-description {
-			font-size: 0.8rem;
-		}
+	/* Utility Classes */
+	.animate-fade-in {
+		animation: fade-in 0.5s ease-in-out;
 	}
 </style>
-
-<div class="panel-container">
-	<Panel {panel} {render} on:switch={onSwitchClicked} />
-</div>
 
